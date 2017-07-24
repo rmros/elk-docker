@@ -43,3 +43,9 @@ script:
 - curl -XGET 'localhost:9200/customer/external/1?pretty'
 - curl -XDELETE 'localhost:9200/customer?pretty'
 - curl 'localhost:9200/_cat/indices?v'
+- curl -XPOST 'localhost:9200/customer/external?pretty' -d '{"name":"ramin rostami"}'
+- curl -XPOST 'localhost:9200/customer/external?pretty' -d '{"name":"masood rostami"}'
+- curl 'localhost:9200/_cat/indices?v'
+- curl -XGET 'localhost:9200/_search?pretty'
+- curl -XPOST http://localhost:9200/customer/external/_search?pretty -d '{"query":{"match_all":{}}}'
+
