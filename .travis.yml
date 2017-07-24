@@ -35,3 +35,6 @@ script:
 - echo simple GET request to Elasticsearc's _search API
 # simple GET request to Elasticsearc's _search API
 - curl -XGET "http://localhost:9200/_search" -d
+# Creating an Index
+- echo Creating an Index
+- curl -XPUT 'localhost:9200/customer?pretty'
