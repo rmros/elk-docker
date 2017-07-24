@@ -10,8 +10,6 @@ before_install:
 - docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -d --name elk_container elk_image
 - travis_wait 20
 - docker ps -a
-- docker exec elk_container curl --head http://127.0.0.1:9200
-- docker exec elk_container netstat -nlp | grep LISTEN
 # HardWare Usage:
 - cat /proc/cpuinfo | grep 'model name' | uniq
 - cat /proc/cpuinfo | grep processor
