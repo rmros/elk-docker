@@ -41,3 +41,5 @@ script:
 
 - curl -XPUT  'localhost:9200/customer/external/1?pretty'  -d '{"name":"ramin rostami"}'
 - curl -XGET 'localhost:9200/customer/external/1?pretty'
+- curl -XDELETE 'localhost:9200/customer?pretty'
+- curl 'localhost:9200/_cat/indices?v'
