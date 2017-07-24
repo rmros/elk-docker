@@ -39,5 +39,5 @@ script:
 - curl -XPUT 'localhost:9200/customer?pretty'
 - curl 'localhost:9200/_cat/indices?v'
 
-# Creating Document
-- curl -XPUT "localhost:9200/customer/external/1?pretty" -d '{"name":"ramin rostami"}'
+- curl -XPUT  'localhost:9200/customer/external/1?pretty'  -d '{"name":"ramin rostami"}'
+- curl -XGET 'localhost:9200/customer/external/1?pretty'
