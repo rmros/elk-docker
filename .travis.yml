@@ -13,7 +13,7 @@ before_install:
 - docker logs elk_container
 - docker inspect elk_container
 - travis_wait 5
-- docker exec elk_container service elasticsearch status
+- docker exec elk_container gosu service elasticsearch status
 - docker exec elk_container curl --head http://127.0.0.1:9200
 - docker exec elk_container netstat -nlp | grep LISTEN
 # HardWare Usage:
