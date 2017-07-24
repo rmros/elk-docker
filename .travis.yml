@@ -38,3 +38,4 @@ script:
 - echo Creating an Index
 - curl -XPUT 'localhost:9200/customer?pretty'
 - curl 'localhost:9200/_cat/indices?v'
+- curl -XPUT 'localhost:9200/customer/external/1?pretty' -d '
