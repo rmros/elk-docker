@@ -7,7 +7,8 @@ before_install:
 - docker build -t elk_image .
 - sudo sysctl -w vm.max_map_count=262144
 - docker images
-- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk_container elk_image
+- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -d --name elk_container elk_image
+- travis_wait 10
 - docker ps -a
 - docker logs elk_container
 - docker inspect elk
