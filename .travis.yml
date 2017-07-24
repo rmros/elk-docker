@@ -24,7 +24,7 @@ script:
 - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
 - curl  http://127.0.0.1:9200
 - curl  curl -XGET 'localhost:9200/?pretty'
-- curl '$current_ip:9200'
+- curl $current_ip:9200
 # Checking the cluster health
 - curl 'localhost:9200/_cat/health?v'
 - curl 'localhost:9200/_cat/nodes?v'
