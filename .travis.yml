@@ -12,6 +12,8 @@ before_install:
 
 - docker exec -it elk_container echo hello world
 - docker exec -it elk_container /opt/logstash/bin/logstash --version
+- docker exec -it elk_container cat /etc/logstash/conf.d/logstash.conf
+
 - docker ps -a
 # HardWare Usage:
 - echo HardWare Usage
