@@ -11,24 +11,27 @@ before_install:
 - travis_wait 30
 - docker ps -a
 # HardWare Usage:
-- echo HardWare Usage:
+- echo HardWare Usage
 - cat /proc/cpuinfo | grep 'model name' | uniq
 - cat /proc/cpuinfo | grep processor
 - sudo lshw -c memory
 - sudo df -h
 # Network Information
-- echo Network Information:
+- echo Network Information
 - current_ip="$(curl --silent --show-error --fail ipecho.net/plain)"
 - echo "Public IP :$current_ip"
 - ifconfig 
 script:
 # Elastic Search TEST
-- echo Elastic Search TEST:
+- echo Elastic Search TEST
 - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
 - curl  http://127.0.0.1:9200
 - curl  curl -XGET 'localhost:9200/?pretty'
 # Checking the cluster health
-- echo Checking the cluster health:
+- echo Checking the cluster health
 - curl 'localhost:9200/_cat/health?v'
 - curl 'localhost:9200/_cat/nodes?v'
 - curl 'localhost:9200/_cat/indices?v'
+- echo simple GET request to Elasticsearc's _search API
+# simple GET request to Elasticsearc's _search API
+- curl -XGET "http://localhost:9200/_search" -d
