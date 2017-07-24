@@ -23,4 +23,5 @@ before_install:
 script:
 - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
 - curl  http://127.0.0.1:9200
+- curl  curl -XGET 'localhost:9200/?pretty'
 - curl '$current_ip:9200'
