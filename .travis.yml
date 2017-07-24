@@ -10,6 +10,8 @@ before_install:
 - docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -d --name elk_container elk_image
 - travis_wait 30
 - docker exec -d elk_container bash gosu /opt/logstash/bin/logstash-plugin install logstash-input-beats
+- docker exec -d elk_container bash /opt/logstash/bin/logstash --version
+- docker exec -d elk_container /opt/logstash/bin/logstash --version
 - docker ps -a
 # HardWare Usage:
 - echo HardWare Usage
