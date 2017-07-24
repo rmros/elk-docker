@@ -11,6 +11,7 @@ before_install:
 - travis_wait 30
 - docker exec -i elk_container bash echo hello world
 - docker exec -it elk_container bash echo hello world
+- docker exec -t elk_container bash echo hello world
 - docker ps -a
 # HardWare Usage:
 - echo HardWare Usage
