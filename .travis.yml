@@ -1,0 +1,31 @@
+sudo: required
+language: bash
+services: docker
+
+before_install:
+# Docker:
+- docker build -t elk_image .
+- sudo sysctl -w vm.max_map_count=262144
+- docker images
+- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk_container elk_image
+- docker ps -a
+- docker logs elk_container
+- docker inspect elk
+- travis_wait 5
+- docker exec elk_container service elasticsearch status
+- docker exec elk_container curl --head http://127.0.0.1:9200
+- docker exec elk_container netstat -nlp | grep LISTEN
+# HardWare Usage:
+- cat /proc/cpuinfo | grep 'model name' | uniq
+- cat /proc/cpuinfo | grep processor
+- sudo lshw -c memory
+- sudo df -h
+# Network Information
+- current_ip="$(curl --silent --show-error --fail ipecho.net/plain)"
+- echo "Public IP :$current_ip"
+- ifconfig 
+# Elastic Search TEST
+script:
+- wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
+- curl --head http://127.0.0.1:9200
+- curl --head http://www.google.com/
