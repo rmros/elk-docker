@@ -138,7 +138,7 @@ ADD ./logstash.conf /etc/logstash/conf.d/logstash.conf
 #RUN chown -R logstash:logstash ${LOGSTASH_HOME}/patterns
 
 # Fix permissions
-#RUN chmod -R +r /etc/logstash
+RUN chmod -R +r /etc/logstash
 
 ### configure logrotate
 
