@@ -8,7 +8,7 @@ before_install:
 - docker build -t elk_image .
 
 - docker images
-- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -d --name elk_container elk_image
+- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 6379:6379 -d --name elk_container elk_image
 - travis_wait 30
 
 - docker exec -it elk_container echo hello world
@@ -41,6 +41,7 @@ script:
 - echo Elastic Search TEST
 - wget -q --waitretry=1 --retry-connrefused -T 10 -O - http://127.0.0.1:9200
 - curl  http://127.0.0.1:9200
+- curl  http://127.0.0.1:6379
 - curl  curl -XGET 'localhost:9200/?pretty'
 # Checking the cluster health
 - echo Checking the cluster health
