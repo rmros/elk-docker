@@ -36,6 +36,7 @@ RUN set -x \
  && apt-get update -qq \
  && apt-get install -qqy openjdk-8-jdk \
  && apt-get clean \
+ && apt-get install -y acl \
  && set +x
 
 
