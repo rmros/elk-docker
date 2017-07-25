@@ -15,13 +15,14 @@ before_install:
 - docker exec -it elk_container /opt/logstash/bin/logstash --version
 #- docker exec -it elk_container setfacl -m u:logstash:r /var/log/{syslog,auth.log}
 - docker exec -it elk_container  service logstash restart
-- docker exec -it elk_container /opt/logstash/bin/logstash --config.test_and_exit -f /etc/logstash/conf.d/indexing.conf/  
+- docker exec -it elk_container /opt/logstash/bin/logstash --config.test_and_exit -f /etc/logstash/conf.d/indexing.conf/ 
+- docker exec -it elk_container redis-server --version 
 #- docker exec -it elk_container /opt/logstash/bin/logstash -f /etc/logstash/conf.d/indexing.conf/  
 
 # Docker for shipper:
-- docker build -t shipper_image shipper/.
-- docker run -p  6379:6379 -d --name shipper_container shipper_image
-- docker exec -it shipper_container service logstash restart
+#- docker build -t shipper_image shipper/.
+#- docker run -p  6379:6379 -d --name shipper_container shipper_image
+#- docker exec -it shipper_container service logstash restart
 
 - docker ps -a
 # HardWare Usage:

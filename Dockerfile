@@ -37,6 +37,7 @@ RUN set -x \
  && apt-get install -qqy openjdk-8-jdk \
  && apt-get clean \
  && apt-get install -y acl \
+ && apt-get install -y redis-server \
  && set +x
 
 
@@ -155,7 +156,11 @@ RUN chmod 644 /etc/logrotate.d/elasticsearch \
 
 ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
 
+### configure redis 
 
+COPY ./redis.conf /etc/redis/
+RUN service redis-server restart
+RUN service logstash restart
 ###############################################################################
 #                                   START
 ###############################################################################
