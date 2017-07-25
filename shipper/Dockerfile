@@ -40,7 +40,7 @@ RUN set -x \
  && set +x
 
 ### install Logstash
-
+ENV ELK_VERSION 5.5.0
 ENV LOGSTASH_VERSION ${ELK_VERSION}
 ENV LOGSTASH_HOME /opt/logstash
 ENV LOGSTASH_PACKAGE logstash-${LOGSTASH_VERSION}.tar.gz
